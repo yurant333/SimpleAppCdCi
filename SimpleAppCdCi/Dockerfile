@@ -16,7 +16,7 @@ WORKDIR "/src/."
 RUN dotnet build "SimpleAppCdCi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SimpleAppCdCi.csproj" -c Release -o /app/publish
+RUN dotnet publish ".csproj" -c Release -o /app/publish
 
 # Final stage, copy the publish output to runtime image
 FROM base AS final

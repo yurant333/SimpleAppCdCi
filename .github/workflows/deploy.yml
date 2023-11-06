@@ -27,5 +27,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          dockerfile: SimpleAppCdCi/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/simpleappcdci:latest
