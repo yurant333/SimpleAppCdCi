@@ -1,18 +1,32 @@
-﻿name: Code Check
+﻿name: Auto Merge on Approval and Passes Checks
 
 on:
   pull_request:
     types:
-      - closed
+      - opened
+      - synchronize
 
 jobs:
-  code-check:
-    if: github.event.pull_request.merged == true
+  merge:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check Out Code
+      - name: Check if Pull Request is Approved
+        id: pr
+        uses: gclpub/pr-branch@release/v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout Code
         uses: actions/checkout@v2
 
       - name: Run Code Checks
         # Add the necessary steps to check your code (e.g., linters, tests, etc.)
+
+      - name: Merge If Approved and Checks Pass
+        if: steps.pr.outputs.approved == 'true' && success()
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git merge --no-ff ${{ github.event.pull_request.head.sha }}
+          git push
