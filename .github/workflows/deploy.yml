@@ -26,7 +26,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: SimpleAppCdCi
           dockerfile: SimpleAppCdCi/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/simpleappcdci:latest
