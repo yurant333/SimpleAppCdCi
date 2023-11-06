@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAppCdCi", "SimpleAppCdCi\SimpleAppCdCi.csproj", "{A5E969E8-F333-45E8-B039-204C29611CC4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5E969E8-F333-45E8-B039-204C29611CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E969E8-F333-45E8-B039-204C29611CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E969E8-F333-45E8-B039-204C29611CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E969E8-F333-45E8-B039-204C29611CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
