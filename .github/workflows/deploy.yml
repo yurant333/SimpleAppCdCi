@@ -1,9 +1,18 @@
-﻿name: CI
+﻿name: Code Check
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
+    types:
+      - closed
+
+jobs:
+  code-check:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Out Code
+        uses: actions/checkout@v2
+
+      - name: Run Code Checks
+        # Add the necessary steps to check your code (e.g., linters, tests, etc.)
