@@ -25,3 +25,17 @@ jobs:
           dockerfile: SimpleAppCdCi/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/simpleappcdci:latest
+deploy:
+  needs: push_to_registry
+  runs-on: ubuntu-latest
+  steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST_IP }}
+        username: ${{ secrets.HOST_USERNAME }}
+        key: ${{ secrets.HOST_SSH_KEY }}
+        script: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/simpleappcdci:latest
+          docker stop now-try-here-5000
+          docker run -d --name=now-try-here-5000 -p 80:80 ${{ secrets.DOCKER_USERNAME }}/simpleappcdci:latest
