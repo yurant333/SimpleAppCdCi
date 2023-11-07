@@ -38,4 +38,4 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/simpleappcdci:latest
             cd /white_rabbit
-            docker compose up
+            docker compose up -d --always-recreate-deps
