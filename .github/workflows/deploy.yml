@@ -37,4 +37,5 @@ jobs:
           key: ${{ secrets.HOST_SSH_KEY }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/simpleappcdci:latest
+            cd /white_rabbit
             docker compose up
